@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - MindMap Studio</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/modal.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-left">
+            <span class="nav-logo">📋</span>
+            <span class="nav-title">MindMap Studio</span>
+        </div>
+        <div class="nav-right">
+            <span class="user-greeting" id="userGreeting">Hi, User!</span>
+            <button class="btn-logout" onclick="logout()">Logout</button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="dashboard-container">
+        <div class="dashboard-header">
+            <h2>My Boards</h2>
+            <button class="btn-create-board" onclick="openCreateBoardModal()">+ Create Board</button>
+        </div>
+
+        <!-- Boards Grid -->
+        <div class="boards-grid" id="boardsGrid">
+            <p class="loading-text" id="loadingText">Loading your boards...</p>
+        </div>
+    </div>
+
+    <!-- Create Board Modal -->
+    <div class="modal-overlay" id="createBoardModal" style="display:none;">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3>Create New Board</h3>
+                <span class="modal-close" onclick="closeCreateBoardModal()">✕</span>
+            </div>
+            <div class="form-group">
+                <label>Board Name</label>
+                <input type="text" id="newBoardName" placeholder="e.g. College Project, Work Tasks..." />
+            </div>
+            <div class="modal-actions">
+                <button class="btn-cancel" onclick="closeCreateBoardModal()">Cancel</button>
+                <button class="btn-primary" onclick="createBoard()">Create</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Board Modal -->
+    <div class="modal-overlay" id="editBoardModal" style="display:none;">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3>Rename Board</h3>
+                <span class="modal-close" onclick="closeEditBoardModal()">✕</span>
+            </div>
+            <div class="form-group">
+                <label>Board Name</label>
+                <input type="text" id="editBoardName" placeholder="New board name..." />
+                <input type="hidden" id="editBoardId" />
+            </div>
+            <div class="modal-actions">
+                <button class="btn-cancel" onclick="closeEditBoardModal()">Cancel</button>
+                <button class="btn-primary" onclick="updateBoard()">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

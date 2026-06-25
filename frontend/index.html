@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Board - MindMap Studio</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/board.css">
+    <link rel="stylesheet" href="css/modal.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-left">
+            <a href="dashboard.html" class="nav-back">← Back</a>
+            <span class="nav-logo">📋</span>
+            <span class="nav-title" id="boardTitle">Loading...</span>
+        </div>
+        <div class="nav-right">
+            <span class="user-greeting" id="userGreeting">Hi, User!</span>
+            <button class="btn-logout" onclick="logout()">Logout</button>
+        </div>
+    </nav>
+
+    <!-- Board Area -->
+    <div class="board-area">
+        <div class="lists-container" id="listsContainer">
+            <!-- Lists will be loaded here by JavaScript -->
+        </div>
+
+        <!-- Add List Button -->
+        <div class="add-list-panel">
+            <div class="add-list-form" id="addListForm" style="display:none;">
+                <input type="text" id="newListTitle" placeholder="List name..." />
+                <div class="add-list-buttons">
+                    <button class="btn-small-primary" onclick="addList()">Add List</button>
+                    <button class="btn-small-cancel" onclick="hideAddListForm()">✕</button>
+                </div>
+            </div>
+            <button class="btn-add-list" id="addListBtn" onclick="showAddListForm()">+ Add List</button>
+        </div>
+    </div>
+
+    <!-- Card Details Modal -->
+    <div class="modal-overlay" id="cardModal" style="display:none;">
+        <div class="modal-box modal-large">
+            <div class="modal-header">
+                <h3>Card Details</h3>
+                <span class="modal-close" onclick="closeCardModal()">✕</span>
+            </div>
+
+            <input type="hidden" id="modalCardId" />
+            <input type="hidden" id="modalListId" />
+
+            <div class="form-group">
+                <label>Title</label>
+                <input type="text" id="modalCardTitle" placeholder="Card title" />
+            </div>
+
+            <div class="form-group">
+                <label>Description</label>
+                <textarea id="modalCardDesc" rows="3" placeholder="Add a description..."></textarea>
+            </div>
+
+            <div class="modal-row">
+                <div class="form-group half">
+                    <label>Priority</label>
+                    <select id="modalCardPriority">
+                        <option value="Low">Low</option>
+                        <option value="Normal" selected>Normal</option>
+                        <option value="High">High</option>
+                        <option value="Urgent">Urgent</option>
+                    </select>
+                </div>
+                <div class="form-group half">
+                    <label>Status</label>
+                    <select id="modalCardStatus">
+                        <option value="todo" selected>Todo</option>
+                        <option value="doing">Doing</option>
+                        <option value="done">Done</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-row">
+                <div class="form-group half">
+                    <label>Due Date</label>
+                    <input type="date" id="modalCardDueDate" />
+                </div>
+            </div>
+
+            <div class="modal-actions">
+                <button class="btn-danger" onclick="deleteCardFromModal()">Delete Card</button>
+                <div>
+                    <button class="btn-cancel" onclick="closeCardModal()">Cancel</button>
+                    <button class="btn-primary" onclick="saveCardFromModal()">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/dragdrop.js"></script>
+    <script src="js/board.js"></script>
+</body>
+</html>

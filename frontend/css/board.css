@@ -1,0 +1,276 @@
+/* board.css - The main Kanban board styles */
+
+.board-area {
+    display: flex;
+    align-items: flex-start;
+    padding: 24px;
+    overflow-x: auto;
+    min-height: calc(100vh - 56px);
+    gap: 18px;
+}
+
+/* The container that holds all the lists side by side */
+.lists-container {
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+}
+
+/* A single list/column */
+.list-column {
+    background: #ebecf0;
+    border-radius: 10px;
+    width: 270px;
+    min-width: 270px;
+    padding: 12px;
+    max-height: calc(100vh - 100px);
+    display: flex;
+    flex-direction: column;
+}
+
+.list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    padding: 0 4px;
+}
+
+.list-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #172b4d;
+    cursor: default;
+}
+
+.list-title-input {
+    font-size: 14px;
+    font-weight: 700;
+    color: #172b4d;
+    border: 1.5px solid #4c6ef5;
+    border-radius: 5px;
+    padding: 2px 6px;
+    outline: none;
+    background: white;
+    width: 140px;
+}
+
+.list-menu {
+    display: flex;
+    gap: 4px;
+}
+
+.btn-list-menu {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 13px;
+    padding: 3px 6px;
+    border-radius: 4px;
+    color: #5e6c84;
+    transition: background 0.2s;
+}
+
+.btn-list-menu:hover {
+    background: rgba(0,0,0,0.1);
+}
+
+/* Cards inside a list */
+.cards-list {
+    flex: 1;
+    overflow-y: auto;
+    min-height: 40px;
+    padding: 2px;
+}
+
+/* The card drop zone highlight when dragging over */
+.cards-list.drag-over {
+    background: rgba(76, 110, 245, 0.08);
+    border-radius: 6px;
+    border: 2px dashed #4c6ef5;
+}
+
+/* A single card */
+.card-item {
+    background: white;
+    border-radius: 8px;
+    padding: 10px 12px;
+    margin-bottom: 8px;
+    cursor: grab;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    transition: box-shadow 0.15s;
+    border-left: 3px solid transparent;
+}
+
+.card-item:hover {
+    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+}
+
+.card-item:active {
+    cursor: grabbing;
+}
+
+/* A card being dragged looks a bit faded */
+.card-item.dragging {
+    opacity: 0.4;
+    cursor: grabbing;
+}
+
+/* Priority color on the left border */
+.card-item.priority-Low { border-left-color: #68d391; }
+.card-item.priority-Normal { border-left-color: #63b3ed; }
+.card-item.priority-High { border-left-color: #f6ad55; }
+.card-item.priority-Urgent { border-left-color: #fc8181; }
+
+.card-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: #172b4d;
+    margin-bottom: 6px;
+    line-height: 1.4;
+}
+
+.card-meta {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.card-priority-badge,
+.card-status-badge {
+    font-size: 10px;
+    padding: 2px 7px;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+.badge-Low { background: #c6f6d5; color: #276749; }
+.badge-Normal { background: #bee3f8; color: #2a69ac; }
+.badge-High { background: #feebc8; color: #c05621; }
+.badge-Urgent { background: #fed7d7; color: #9b2c2c; }
+
+.status-todo { background: #e2e8f0; color: #334155; }
+.status-doing { background: #c7d2fe; color: #1e3a8a; }
+.status-done { background: #c6f6d5; color: #22543d; }
+
+.card-due {
+    font-size: 10px;
+    color: #999;
+}
+
+/* Add card button at the bottom of each list */
+.btn-add-card {
+    background: transparent;
+    border: none;
+    color: #5e6c84;
+    padding: 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    text-align: left;
+    width: 100%;
+    margin-top: 6px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.btn-add-card:hover {
+    background: rgba(0,0,0,0.08);
+    color: #172b4d;
+}
+
+/* Inline card form */
+.add-card-form {
+    margin-top: 8px;
+}
+
+.add-card-form input {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1.5px solid #4c6ef5;
+    border-radius: 6px;
+    font-size: 13px;
+    outline: none;
+    margin-bottom: 8px;
+    font-family: inherit;
+}
+
+.add-card-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-small-primary {
+    background: #4c6ef5;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: background 0.2s;
+}
+
+.btn-small-primary:hover {
+    background: #3b5bdb;
+}
+
+.btn-small-cancel {
+    background: transparent;
+    border: none;
+    color: #888;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.btn-small-cancel:hover {
+    background: rgba(0,0,0,0.08);
+    color: #333;
+}
+
+/* The "Add List" panel at the right side */
+.add-list-panel {
+    min-width: 260px;
+}
+
+.add-list-form {
+    background: #ebecf0;
+    border-radius: 10px;
+    padding: 12px;
+}
+
+.add-list-form input {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1.5px solid #4c6ef5;
+    border-radius: 6px;
+    font-size: 13px;
+    outline: none;
+    margin-bottom: 8px;
+    font-family: inherit;
+}
+
+.add-list-buttons {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.btn-add-list {
+    background: rgba(255,255,255,0.4);
+    border: none;
+    color: #333;
+    padding: 10px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    width: 100%;
+    text-align: left;
+    transition: background 0.2s;
+}
+
+.btn-add-list:hover {
+    background: rgba(255,255,255,0.6);
+}
